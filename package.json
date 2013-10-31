@@ -6,7 +6,7 @@
     "license": "MIT",
     "author": "Ryan Van Etten",
     "keywords": ["umd", "boilerplate", "template"],
-    "main": "./universal.js",
+    "main": "./index.js",
     "repository": {
         "type": "git",
         "url": "https://github.com/ryanve/universal.git"

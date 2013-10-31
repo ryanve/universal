@@ -10,6 +10,7 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: pkg,
+        aok: { test: ['./test'] },
         jshint: {
             // gruntjs.com/configuring-tasks#globbing-patterns
             // **/** matches in current and sub dirs
@@ -52,6 +53,7 @@ module.exports = function(grunt) {
         }
     });
 
+    grunt.loadNpmTasks('aok');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');

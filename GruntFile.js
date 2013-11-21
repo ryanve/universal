@@ -6,7 +6,10 @@ module.exports = function(grunt) {
       , main = pkg.main && path.basename(pkg.main) || 'index.js'
       , source = [_.find([from + 'index.js', from + main, from + pkg.name], function(v) {
             return this.existsSync(v);
-        }, require('fs'))];
+        }, require('fs'))]
+      , holder = (function(who) {
+            return typeof who == 'string' ? who.split(/\s+</)[0].trim() : who && who.name || '';
+        }(pkg.author));
 
     grunt.initConfig({
         pkg: pkg,
@@ -34,7 +37,7 @@ module.exports = function(grunt) {
                     '/*!',
                     ' * <%= pkg.name %> <%= pkg.version %>+<%= grunt.template.today("UTC:yyyymmddHHMM") %>',
                     ' * <%= pkg.homepage %>',
-                    ' * MIT License 2013 <%= pkg.author %>',
+                    ' * MIT License <%= grunt.template.today("UTC:yyyy") %> ' + holder,
                     ' */\n\n'
                 ].join('\n')
             },

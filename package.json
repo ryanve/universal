@@ -1,7 +1,7 @@
 {
     "name": "universal",
     "description": "universal module template",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "homepage": "https://github.com/ryanve/universal",
     "license": "MIT",
     "author": "Ryan Van Etten",

@@ -1,3 +1,4 @@
+// See github.com/ryanve/universal
 module.exports = function(grunt) {
   var _ = grunt.util._,
     fs = require('fs'),
@@ -62,6 +63,7 @@ module.exports = function(grunt) {
     this.test(name) && grunt.loadNpmTasks(name);
   }, /^grunt-|aok/);
 
-  grunt.registerTask('test', ['aok']);
-  grunt.registerTask('default', ['jshint:grunt', 'jshint:sub', 'aok', 'concat', 'jshint:build', 'uglify']);
+  grunt.registerTask('test', ['jshint:sub', 'aok']);
+  grunt.registerTask('build', ['jshint:grunt', 'test', 'concat:build', 'jshint:build', 'uglify']);
+  grunt.registerTask('default', ['build']);
 };

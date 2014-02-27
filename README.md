@@ -22,4 +22,4 @@ $ grunt
 
 ## License
 
-[MIT](http://opensource.org/licenses/MIT)
+[MIT](package.json#L6-L7)

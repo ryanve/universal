@@ -1,4 +1,4 @@
-// See github.com/ryanve/universal
+//github.com/ryanve/universal#grunt
 module.exports = function(grunt) {
   var _ = grunt.util._,
     fs = require('fs'),

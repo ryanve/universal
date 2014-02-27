@@ -1,11 +1,11 @@
 {
   "name": "universal",
   "description": "universal module template",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/ryanve/universal",
   "license": "MIT",
   "author": "Ryan Van Etten",
-  "keywords": ["umd", "boilerplate", "template"],
+  "keywords": ["umd", "boilerplate"],
   "main": "./index.js",
   "repository": {
     "type": "git",

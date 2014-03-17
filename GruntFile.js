@@ -63,7 +63,7 @@ module.exports = function(grunt) {
     this.test(name) && grunt.loadNpmTasks(name);
   }, /^grunt-|aok/);
 
-  grunt.registerTask('test', ['jshint:sub', 'aok']);
+  grunt.registerTask('test', ['jshint:sub'].concat(pkg.devDependencies.aok ? 'aok' : []));
   grunt.registerTask('build', ['jshint:grunt', 'test', 'concat:build', 'jshint:build', 'uglify']);
   grunt.registerTask('default', ['build']);
 };

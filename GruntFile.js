@@ -8,8 +8,8 @@ module.exports = function(grunt) {
   var main = pkg.main && path.basename(pkg.main) || 'index.js';
   var srcs = [_.find(['src/index.js', 'src/' + main, 'src/' + pkg.name], exists)];
 
-  function maybe(task) {
-    return grunt.task._tasks[task] ? [task] : [];
+  function has(task) {
+    return !!grunt.task._tasks[task.split(':')[0]];
   }
 
   grunt.initConfig({
@@ -53,7 +53,7 @@ module.exports = function(grunt) {
     this.test(name) && grunt.loadNpmTasks(name);
   }, /^grunt-|aok/);
 
-  grunt.registerTask('test', ['jshint:sub', 'jshint:grunt'].concat(maybe('aok')));
-  grunt.registerTask('build', ['test', 'concat:build', 'jshint:build'].concat(maybe('uglify')));
-  grunt.registerTask('default', ['build']);
+  grunt.registerTask('test', ['jshint:sub', 'jshint:grunt', 'aok'].filter(has));
+  grunt.registerTask('build', ['test', 'concat:build', 'jshint:build', 'uglify'].filter(has));
+  grunt.registerTask('default', [has('concat') ? 'build' : 'jshint:all'].filter(has));
 };

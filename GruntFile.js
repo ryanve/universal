@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     path = require('path'),
     main = pkg.main && path.basename(pkg.main) || 'index.js',
     source = [_.find(['src/index.js', 'src/' + main, 'src/' + pkg.name], fs.existsSync, fs)],
-    holder = pkg.author && pkg.author.name || pkg.author.split(/\s+</)[0] || '';
+    holder = pkg.author && pkg.author.name || pkg.author.split(/\s*(<|\()/)[0] || '';
 
   grunt.initConfig({
     pkg: pkg,

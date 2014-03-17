@@ -4,14 +4,9 @@ module.exports = function(grunt) {
     fs = require('fs'),
     pkg = grunt.file.readJSON('package.json'),
     path = require('path'),
-    from = 'src/',
     main = pkg.main && path.basename(pkg.main) || 'index.js',
-    source = [_.find([from + 'index.js', from + main, from + pkg.name], function(v) {
-      return fs.existsSync(v);
-    })],
-    holder = (function(who) {
-      return typeof who == 'string' ? who.split(/\s+</)[0].trim() : who && who.name || '';
-    }(pkg.author));
+    source = [_.find(['src/index.js', 'src/' + main, 'src/' + pkg.name], fs.existsSync, fs)],
+    holder = pkg.author && pkg.author.name || pkg.author.split(/\s+</)[0] || '';
 
   grunt.initConfig({
     pkg: pkg,

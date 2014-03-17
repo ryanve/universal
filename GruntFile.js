@@ -1,45 +1,34 @@
 //github.com/ryanve/universal#grunt
+//gruntjs.com/configuring-tasks#globbing-patterns
 module.exports = function(grunt) {
-  var _ = grunt.util._,
-    fs = require('fs'),
-    pkg = grunt.file.readJSON('package.json'),
-    path = require('path'),
-    main = pkg.main && path.basename(pkg.main) || 'index.js',
-    source = [_.find(['src/index.js', 'src/' + main, 'src/' + pkg.name], fs.existsSync, fs)],
-    holder = pkg.author && pkg.author.name || pkg.author.split(/\s*(<|\()/)[0] || '';
+  var _ = grunt.util._;
+  var fs = require('fs');
+  var exists = _.compose(fs.existsSync.bind(fs), _.identity);
+  var pkg = grunt.file.readJSON('package.json');
+  var path = require('path');
+  var main = pkg.main && path.basename(pkg.main) || 'index.js';
+  var srcs = [_.find(['src/index.js', 'src/' + main, 'src/' + pkg.name], exists)];
 
   grunt.initConfig({
     pkg: pkg,
-    aok: { test: ['./test'] },
     jshint: {
-      // gruntjs.com/configuring-tasks#globbing-patterns
-      // **/** matches in current and sub dirs
-      all: ['./'], // current dir and sub dirs
+      dir: ['*.js'], // shallow
       sub: ['*/'], // sub dirs
-      dir: ['*.js'], // current dir
+      all: ['./'], // deep
       src: ['src/'],
       test: ['test/'],
       grunt: [path.basename(__filename)],
       build: [main],
-      options: {
-        ignores: ['**/**/node_modules/', '**/**/vendor/', '**/**.min.js'],
-        debug:true, expr:true, sub:true, boss:true, supernew:true, node:true,
-        undef:true, unused:true, devel:true, evil:true, laxcomma:true, eqnull:true, 
-        browser:true, globals:{ender:true, define:true}, jquery:true, maxerr:10
-      }
+      options: _.extend({
+        ignores: ['**/**/node_modules/', '**/**/vendor/', '**/**.min.js'] // anywhere
+      }, pkg.jshintConfig || exists('.jshintrc') && grunt.file.readJSON('.jshintrc') || {})
     },
     concat: {
       options: {
-        banner: [
-          '/*!',
-          ' * <%= pkg.name %> <%= pkg.version %>+<%= grunt.template.today("UTC:yyyymmddHHMM") %>',
-          ' * <%= pkg.homepage %>',
-          ' * MIT License (c) <%= grunt.template.today("UTC:yyyy") %> ' + holder,
-          ' */\n\n'
-        ].join('\n')
+        banner: exists('src/banner.js') ? grunt.file.read('src/banner.js') : ''
       },
       build: {
-        files: _.object([main], [source])
+        files: _.object([main], [srcs])
       }
     },
     uglify: {
@@ -50,10 +39,14 @@ module.exports = function(grunt) {
       build: {
         files: _.object([main.replace(/\.js$/i, '.min.js')], [main])
       }
+    },
+    aok: {
+      test: ['./test'] 
     }
   });
 
-  fs.existsSync('tasks') && grunt.loadTasks('tasks');
+  // Load any local tasks and then load npm ones
+  exists('tasks') && grunt.loadTasks('tasks');
   _.keys(pkg.devDependencies).some(function(name) {
     this.test(name) && grunt.loadNpmTasks(name);
   }, /^grunt-|aok/);

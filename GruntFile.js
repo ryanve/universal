@@ -28,7 +28,10 @@ module.exports = function(grunt) {
     },
     concat: {
       options: {
-        banner: exists('src/banner.js') ? grunt.file.read('src/banner.js') : ''
+        banner: function(file) {
+          var resolved = path.resolve(file);
+          return grunt.file.read(exists(resolved) ? resolved : file);
+        }('src/banner.js')
       },
       build: {
         files: _.object([main], [srcs])

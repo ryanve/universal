@@ -4,8 +4,7 @@ module.exports = function(grunt) {
   var fs = require('fs');
   var path = require('path');
   var exists = _.compose(fs.existsSync, _.identity);
-  var readJSON = _.compose(grunt.file.readJSON, path.resolve, _.identity);
-  var pkg = readJSON('package.json');
+  var pkg = grunt.file.readJSON('package.json');
   var main = pkg.main && path.basename(pkg.main) || 'index.js';
   var srcs = [_.find(['src/index.js', 'src/' + main, 'src/' + pkg.name], exists)];
 
@@ -25,7 +24,7 @@ module.exports = function(grunt) {
       build: [main],
       options: _.extend({
         ignores: ['**/**/node_modules/', '**/**/vendor/', '**/**.min.js'] // anywhere
-      }, pkg.jshintConfig || exists('.jshintrc') && readJSON('.jshintrc') || {})
+      }, pkg.jshintConfig || exists('.jshintrc') && grunt.file.readJSON('.jshintrc') || {})
     },
     concat: {
       options: {

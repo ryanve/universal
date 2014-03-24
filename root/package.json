@@ -2,15 +2,15 @@
   "name": "{%= name %}",
   "description": "{%= name %}",
   "version": "{%= version %}",
-  "homepage": "https://github.com/{%= github_url %}",
+  "homepage": "{%= homepage %}",
   "license": "{%= license %}",
   "author": "{%= author %}",
   "keywords": [],
   "private": true,
   "main": "{%= main %}",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/{%= github_url %}"
+    "type": "{%= repository.type %}",
+    "url": "{%= repository.url %}"
   },
   "devDependencies": {
     "aok": "~1.8.1",

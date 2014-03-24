@@ -1,20 +1,25 @@
 {
-  "name": "universal",
-  "description": "UMD grunt-init template",
-  "version": "0.1.0",
-  "homepage": "https://github.com/ryanve/universal",
-  "license": "MIT",
-  "author": "Ryan Van Etten",
-  "keywords": ["umd", "template"],
-  "main": "./index.js",
+  "name": "{%= name %}",
+  "description": "{%= name %}",
+  "version": "{%= version %}",
+  "homepage": "https://github.com/{%= github_url %}",
+  "license": "{%= license %}",
+  "author": "{%= author %}",
+  "keywords": [],
+  "private": true,
+  "main": "{%= main %}",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ryanve/universal.git"
+    "url": "https://github.com/{%= github_url %}"
   },
   "devDependencies": {
+    "aok": "~1.8.1",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-jshint": "~0.9.0"
   },
   "jshintConfig": {
+    "asi": false,
     "boss": true,
     "browser": true,
     "debug": true,
@@ -27,6 +32,7 @@
       "ender": true 
     },
     "jquery": true,
+    "lastsemic": true,
     "latedef": "nofunc",
     "laxcomma": true,
     "maxerr": 10,
@@ -34,6 +40,7 @@
     "sub": true,
     "supernew": true,
     "undef": true,
-    "unused": true
+    "unused": true,
+    "worker": true
   }
 }

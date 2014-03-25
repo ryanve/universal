@@ -2,15 +2,9 @@
 #### [`grunt-init`](https://github.com/gruntjs/grunt-init) template for making a universal JavaScript module
 
 ## Features
-#### [UMD](https://github.com/umdjs/umd)
-[src/](root/src) uses a [UMD boilerplate](root/src/index.js) that works in CommonJS, [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD), and/or browsers. The purpose of the UMD pattern is to make code usable in as many contexts as possible. It allows code to work with various build tools.
-
-#### [Grunt](http://gruntjs.com)
-The included [universal GruntFile](root/GruntFile.js) uses [these grunt plugins](root/package.json#L15-L20) to perform [common tasks](#grunt-tasks).
-
-<a name="aok"></a>
-#### test
-[test/](root/test) contains a boilerplate for writing tests with [aok](https://github.com/ryanve/aok) or another test framework.
+- <a name="umd"></a><b>U</b>niversal <b>M</b>odule <b>D</b>efinition: [src/](root/src) uses a [UMD boilerplate](root/src/index.js) that works in CommonJS, [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD), and/or browsers. [UMD patterns](https://github.com/umdjs/umd) make code work in multiple contexts and with various build tools.
+- <a name="grunt"></a><b>grunt</b>: The included [universal GruntFile](root/GruntFile.js) uses [these grunt plugins](root/package.json#L15-L20) to perform [common tasks](#grunt-tasks).
+- <a name="aok"></a><b>aok</b>: [test/](root/test) contains a boilerplate for writing tests with [aok](https://github.com/ryanve/aok) or another test framework.
 
 ## Usage
 

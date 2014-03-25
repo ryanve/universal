@@ -26,7 +26,7 @@ $ git clone https://github.com/ryanve/universal.git .grunt-init/universal
 #### Setup a new project via the template
 
 ```sh
-$ mkdir example
+$ mkdir example # or clone a repo
 $ cd example
 $ grunt-init universal
 ```

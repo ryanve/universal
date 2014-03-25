@@ -3,7 +3,6 @@
   else if (typeof define == 'function' && define.amd) define(make);
   else if (!name) make();
   else root[name] = make();
-}(this, '<%= pkg.name %>', function() {
-  // create and return the export
-  return {};
+}(this, '', function() {
+
 });

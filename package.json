@@ -5,7 +5,7 @@
   "homepage": "https://github.com/ryanve/universal",
   "license": "MIT",
   "author": "Ryan Van Etten",
-  "keywords": ["umd", "template"],
+  "keywords": ["umd", "template", "boilerplate"],
   "main": "./index.js",
   "repository": {
     "type": "git",

@@ -1,5 +1,5 @@
 //github.com/ryanve/universal#grunt
-module.exports = function(grunt) {  
+module.exports = function(grunt) {
   var _ = grunt.util._;
   var fs = require('fs');
   var path = require('path');
@@ -46,7 +46,7 @@ module.exports = function(grunt) {
       }
     },
     aok: {
-      test: ['./test'] 
+      test: ['./test']
     }
   });
 

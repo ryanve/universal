@@ -1,10 +1,10 @@
 exports.description = 'Create a universal module';
-exports.notes = 'Fields are used to create a package.json file.\n' + 
-  '.version should adhere to semver.org\n' + 
-  '.main is used to generate build filenames\n' + 
+exports.notes = 'Fields are used to create a package.json file.\n' +
+  '.version should adhere to semver.org\n' +
+  '.main is used to generate build filenames\n' +
   '.repo assumes GitHub if like: username/project\n';
 exports.after = 'Open package.json and update fields as needed.\n' +
-  'Remove the .private field when ready to npm publish.\n' + 
+  'Remove the .private field when ready to npm publish.\n' +
   'Google package.json for info.';
 exports.warnOn = '*'; // paths
 

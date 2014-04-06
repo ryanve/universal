@@ -6,7 +6,6 @@
   "license": "MIT",
   "author": "Ryan Van Etten",
   "keywords": ["umd", "template", "boilerplate"],
-  "main": "./index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/ryanve/universal.git"
@@ -16,23 +15,23 @@
   },
   "jshintConfig": {
     "boss": true,
-    "browser": true,
     "debug": true,
     "devel": true,
     "eqnull": true,
-    "evil": true,
     "expr": true,
     "globals": {
-      "define": true,
-      "ender": true 
+      "define": true
     },
-    "jquery": true,
     "latedef": "nofunc",
     "laxcomma": true,
+    "maxcomplexity": 15,
     "maxerr": 10,
+    "maxlen": 115,
+    "maxparams": 4,
     "node": true,
     "sub": true,
     "supernew": true,
+    "trailing": true,
     "undef": true,
     "unused": true
   }

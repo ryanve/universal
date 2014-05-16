@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "{%= name %}",
   "description": "{%= name %}",
   "version": "{%= version %}",
@@ -6,7 +7,6 @@
   "license": "{%= license %}",
   "author": "{%= author %}",
   "keywords": [],
-  "private": true,
   "main": "{%= main %}",
   "repository": {
     "type": "{%= repository.type %}",

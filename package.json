@@ -1,7 +1,7 @@
 {
   "name": "universal",
   "description": "UMD grunt-init template",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/ryanve/universal",
   "license": "MIT",
   "author": "Ryan Van Etten",
